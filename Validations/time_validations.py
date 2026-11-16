@@ -1,4 +1,4 @@
-from datetime import datetime,date,time
+from datetime import datetime,date,time,timedelta
 
 def in_time_slice(checked_time:time, start:time,end:time)->bool:
     result = False
@@ -17,11 +17,19 @@ def time_in_opened(checked_time:time)->bool:
     end = time(22, 0, 0)
     return in_time_slice(checked_time,start,end)
 
-def past_date():
-    pass
+def past_date(date_to_check:date,deadline:date)->bool:
+    if date_to_check <= deadline:
+        return False
+    return True
 
-def game_started():
-    pass
+def before_datetime(time_to_check:datetime,deadline:datetime)->bool:
+    if time_to_check < deadline:
+        return True
+    return False
+
+
+
+    
     
 
 
