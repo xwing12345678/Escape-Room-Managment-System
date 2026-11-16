@@ -48,13 +48,6 @@ def get_datetime_from_order(order_dict:dict)->datetime:
     return order_datetime
 
 
-# test_time_str = time(12,39).isoformat('minutes')
-# test_date = get_current_date()
-# print(test_time_str)
-# print(get_time_from_str(test_time_str))
-# print(get_date_str_from_date(test_date))
-# print(test_date)
-
 def get_hours_left(game_start:datetime)->int:
     current_datetime = get_current_date_time()
     if not before_datetime(game_start,current_datetime):
