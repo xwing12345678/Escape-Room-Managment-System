@@ -17,6 +17,10 @@ def get_time_str_from_time(time_object:time)->str:
     time_string = time_object.isoformat('minutes')
     return time_string
 
+def get_date_from_str(date_str:str)->date:
+    date_object = date.fromisoformat(date_str)
+    return date_object
+
 def get_date_str_from_date(date_object:date)->str:
     date_string = date_object.isoformat()
     return date_string
@@ -36,14 +40,20 @@ def get_time_slot_end(start:time,duration:int|float,start_date:date,prep_time:in
 def get_time_from_str(time_str:str)->time:
     time_object:time = time.fromisoformat(time_str)
     return time_object
-print(get_date_str_from_datetime(datetime.now()))
 
-test_time_str = time(12,39).isoformat('minutes')
-test_date = get_current_date()
-print(test_time_str)
-print(get_time_from_str(test_time_str))
-print(get_date_str_from_date(test_date))
-print(test_date)
+def get_datetime_from_order(order_dict:dict)->datetime:
+    order_date = get_date_from_str(order_dict['booking_date'])
+    order_time = get_time_from_str(order_dict['start_time'])
+    order_datetime = datetime.combine(order_date,order_time)
+    return order_datetime
+
+
+# test_time_str = time(12,39).isoformat('minutes')
+# test_date = get_current_date()
+# print(test_time_str)
+# print(get_time_from_str(test_time_str))
+# print(get_date_str_from_date(test_date))
+# print(test_date)
 
 def get_hours_left(game_start:datetime)->int:
     current_datetime = get_current_date_time()
@@ -62,15 +72,4 @@ def get_cancellation_percentage(game_start:datetime)->float:
         return 0.25
     else:
         return 0.5
-    
-        
-
-
-
-
-
-
-
-
-
 
